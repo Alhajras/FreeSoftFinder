@@ -1,34 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FreeSoftFinder – 100% Free Software Hub</title>
-  <meta name="description" content="Discover 100% free and open-source software for developers, creators, and professionals.">
+  <meta name="description"
+    content="Discover 100% free and open-source software for developers, creators, and professionals.">
   <style>
-    body { font-family: "Poppins", sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; transition: background .3s, color .3s; }
-    :root { --bg:#f9f9f9; --text:#333; --card-bg:#fff; --primary:#0078ff; }
-    .dark { --bg:#1e1e1e; --text:#f0f0f0; --card-bg:#2a2a2a; --primary:#4fa3ff; }
-    header { background: var(--primary); color:#fff; text-align:center; padding:1.5rem 1rem; }
-    h1 { margin:0; font-size:1.8rem; }
-    #searchBar { margin:1rem auto; display:block; width:80%; max-width:500px; padding:.7rem; border-radius:8px; border:1px solid #ccc; }
-    .top-controls { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; align-items:center; margin-bottom:1rem; }
-    select, button.toggle-mode, .category-buttons button { background:#e6f0ff; border:none; border-radius:8px; padding:.5rem 1rem; cursor:pointer; font-weight:500; transition:.3s; }
-    select:hover, button.toggle-mode:hover, .category-buttons button:hover { background:var(--primary); color:#fff; }
-    .category-buttons { display:flex; justify-content:center; flex-wrap:wrap; gap:.5rem; margin-bottom:1rem; }
-    .software-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:1rem; padding:1rem; max-width:1200px; margin:auto; }
-    .card { background:var(--card-bg); border-radius:10px; padding:1rem; box-shadow:0 2px 6px rgba(0,0,0,.1); display:flex; flex-direction:column; align-items:center; transition:.2s; position:relative; }
-    .card:hover { transform:translateY(-3px); }
-    .card img { width:60px; height:60px; border-radius:8px; margin-bottom:.5rem; background:#fff; object-fit:contain; }
-    .card h3 { margin:.5rem 0; text-align:center; }
-    .card p { font-size:.9rem; text-align:center; color:#777; }
-    .download-btn { margin-top:auto; padding:.5rem 1rem; background:var(--primary); color:#fff; border:none; border-radius:6px; cursor:pointer; text-decoration:none; transition:.3s; }
-    .download-btn:hover { background:#005fcc; }
-    .favorite { position:absolute; top:10px; right:10px; background:none; border:none; font-size:1.4rem; cursor:pointer; color:gold; }
-    footer { text-align:center; padding:1rem; font-size:.8rem; color:#777; }
+    body {
+      font-family: "Poppins", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      transition: background .3s, color .3s;
+    }
+
+    :root {
+      --bg: #f9f9f9;
+      --text: #333;
+      --card-bg: #fff;
+      --primary: #0078ff;
+    }
+
+    .dark {
+      --bg: #1e1e1e;
+      --text: #f0f0f0;
+      --card-bg: #2a2a2a;
+      --primary: #4fa3ff;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    #searchBar {
+      margin: 1rem auto;
+      display: block;
+      width: 80%;
+      max-width: 500px;
+      padding: .7rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .top-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    select,
+    button.toggle-mode,
+    .category-buttons button {
+      background: #e6f0ff;
+      border: none;
+      border-radius: 8px;
+      padding: .5rem 1rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: .3s;
+    }
+
+    select:hover,
+    button.toggle-mode:hover,
+    .category-buttons button:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .category-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+
+    .software-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: .2s;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      margin-bottom: .5rem;
+      background: #fff;
+      object-fit: contain;
+    }
+
+    .card h3 {
+      margin: .5rem 0;
+      text-align: center;
+    }
+
+    .card p {
+      font-size: .9rem;
+      text-align: center;
+      color: #777;
+    }
+
+    .download-btn {
+      margin-top: auto;
+      padding: .5rem 1rem;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    .download-btn:hover {
+      background: #005fcc;
+    }
+
+    .favorite {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: gold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: .8rem;
+      color: #777;
+    }
   </style>
 </head>
+
 <body>
   <header>
     <h1>FreeSoftFinder</h1>
@@ -54,222 +196,246 @@
 
   <script>
     // ---- SOFTWARE DATA ----
-  // ---- SOFTWARE DATA ----
-const softwareList = [
+    // ---- SOFTWARE DATA ----
+    const softwareList = [
 
-  { name: "Visual Studio Code", category: "Development", description: "Free, open-source code editor from Microsoft.", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg", link: "https://code.visualstudio.com/" },
+      { name: "Visual Studio Code", category: "Development", description: "Free, open-source code editor from Microsoft.", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg", link: "https://code.visualstudio.com/" },
 
-  { name: "Notepad++", category: "Development", description: "Free text/code editor for Windows.", logo: "https://notepad-plus-plus.org/images/logo.svg", link: "https://notepad-plus-plus.org/downloads/" },
+      { name: "Notepad++", category: "Development", description: "Free text/code editor for Windows.", logo: "https://notepad-plus-plus.org/images/logo.svg", link: "https://notepad-plus-plus.org/downloads/" },
 
-  { name: "Atom", category: "Development", description: "Hackable open-source text editor by GitHub.", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e2/Atom_1.0_icon.png", link: "https://atom.io/" },
+      { name: "Atom", category: "Development", description: "Hackable open-source text editor by GitHub.", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e2/Atom_1.0_icon.png", link: "https://atom.io/" },
 
-  { name: "Geany", category: "Development", description: "Lightweight IDE supporting many languages.", logo: "https://www.geany.org/static/img/geany.svg", link: "https://www.geany.org/" },
+      { name: "Geany", category: "Development", description: "Lightweight IDE supporting many languages.", logo: "https://www.geany.org/static/img/geany.svg", link: "https://www.geany.org/" },
 
-  { name: "Brackets", category: "Development", description: "Web-focused code editor by Adobe.", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Brackets_Icon.svg", link: "https://brackets.io/" },
+      { name: "Brackets", category: "Development", description: "Web-focused code editor by Adobe.", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Brackets_Icon.svg", link: "https://brackets.io/" },
 
-  { name: "Eclipse IDE", category: "Development", description: "Free Java & multi-language IDE.", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d0/Eclipse-Luna-Logo.svg", link: "https://www.eclipse.org/downloads/" },
+      { name: "Eclipse IDE", category: "Development", description: "Free Java & multi-language IDE.", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d0/Eclipse-Luna-Logo.svg", link: "https://www.eclipse.org/downloads/" },
 
-  { name: "IntelliJ IDEA Community", category: "Development", description: "Free community edition of IntelliJ for Java.", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9c/IntelliJ_IDEA_Icon.svg", link: "https://www.jetbrains.com/idea/download/" },
+      { name: "IntelliJ IDEA Community", category: "Development", description: "Free community edition of IntelliJ for Java.", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9c/IntelliJ_IDEA_Icon.svg", link: "https://www.jetbrains.com/idea/download/" },
 
-  { name: "PyCharm Community", category: "Development", description: "Free Python IDE by JetBrains.", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1d/PyCharm_Icon.svg", link: "https://www.jetbrains.com/pycharm/download/" },
+      { name: "PyCharm Community", category: "Development", description: "Free Python IDE by JetBrains.", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1d/PyCharm_Icon.svg", link: "https://www.jetbrains.com/pycharm/download/" },
 
-  { name: "Android Studio", category: "Development", description: "Free official IDE for Android app development.", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Android_Studio_Icon_3.6.svg", link: "https://developer.android.com/studio" },
+      { name: "Android Studio", category: "Development", description: "Free official IDE for Android app development.", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Android_Studio_Icon_3.6.svg", link: "https://developer.android.com/studio" },
 
-  { name: "Sublime Text (free version)", category: "Development", description: "Lightweight, fast text editor (free to use).", logo: "https://upload.wikimedia.org/wikipedia/en/d/d2/Sublime_Text_3_logo.png", link: "https://www.sublimetext.com/" },
+      { name: "Sublime Text (free version)", category: "Development", description: "Lightweight, fast text editor (free to use).", logo: "https://upload.wikimedia.org/wikipedia/en/d/d2/Sublime_Text_3_logo.png", link: "https://www.sublimetext.com/" },
 
-  { name: "TeX Live (LaTeX)", category: "Development", description: "Free LaTeX distribution for creating professional documents.", logo: "https://upload.wikimedia.org/wikipedia/commons/9/92/LaTeX_logo.svg", link: "https://www.tug.org/texlive/" },
+      { name: "TeX Live (LaTeX)", category: "Development", description: "Free LaTeX distribution for creating professional documents.", logo: "https://upload.wikimedia.org/wikipedia/commons/9/92/LaTeX_logo.svg", link: "https://www.tug.org/texlive/" },
 
-  { name: "GIMP", category: "Design & Graphics", description: "Image editor alternative to Photoshop.", logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/The_GIMP_icon_-_gnome.svg", link: "https://www.gimp.org/downloads/" },
+      { name: "GIMP", category: "Design & Graphics", description: "Image editor alternative to Photoshop.", logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/The_GIMP_icon_-_gnome.svg", link: "https://www.gimp.org/downloads/" },
 
-  { name: "Inkscape", category: "Design & Graphics", description: "Vector graphics editor for designers.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Inkscape_Logo.svg", link: "https://inkscape.org/" },
+      { name: "Inkscape", category: "Design & Graphics", description: "Vector graphics editor for designers.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Inkscape_Logo.svg", link: "https://inkscape.org/" },
 
-  { name: "Blender", category: "Design & Graphics", description: "3D modeling and animation suite.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg", link: "https://www.blender.org/download/" },
+      { name: "Blender", category: "Design & Graphics", description: "3D modeling and animation suite.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg", link: "https://www.blender.org/download/" },
 
-  { name: "Krita", category: "Design & Graphics", description: "Free digital painting tool for artists.", logo: "https://upload.wikimedia.org/wikipedia/commons/7/73/Calligrakrita-base.svg", link: "https://krita.org/" },
+      { name: "Krita", category: "Design & Graphics", description: "Free digital painting tool for artists.", logo: "https://upload.wikimedia.org/wikipedia/commons/7/73/Calligrakrita-base.svg", link: "https://krita.org/" },
 
-  { name: "Canva Free", category: "Design & Graphics", description: "Free version of Canva for web design.", logo: "https://upload.wikimedia.org/wikipedia/en/b/bb/Canva_Logo.svg", link: "https://www.canva.com/" },
+      { name: "Canva Free", category: "Design & Graphics", description: "Free version of Canva for web design.", logo: "https://upload.wikimedia.org/wikipedia/en/b/bb/Canva_Logo.svg", link: "https://www.canva.com/" },
 
-  { name: "Pixlr E", category: "Design & Graphics", description: "Free online photo editor.", logo: "https://www.freelogovectors.net/wp-content/uploads/2022/05/pixlr_logo_freelogovectors.net_.png", link: "https://pixlr.com/e/" },
+      { name: "Pixlr E", category: "Design & Graphics", description: "Free online photo editor.", logo: "https://www.freelogovectors.net/wp-content/uploads/2022/05/pixlr_logo_freelogovectors.net_.png", link: "https://pixlr.com/e/" },
 
-  { name: "Darktable", category: "Design & Graphics", description: "Free RAW photo workflow software.", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Darktable_icon.svg", link: "https://www.darktable.org/" },
+      { name: "Darktable", category: "Design & Graphics", description: "Free RAW photo workflow software.", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Darktable_icon.svg", link: "https://www.darktable.org/" },
 
 
-  // ---- Video & Audio ----
-  { name: "VLC Media Player", category: "Video & Audio", description: "Free media player that supports all audio and video formats.", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e6/VLC_Icon.svg", link: "https://www.videolan.org/vlc/" },
+      // ---- Video & Audio ----
+      { name: "VLC Media Player", category: "Video & Audio", description: "Free media player that supports all audio and video formats.", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e6/VLC_Icon.svg", link: "https://www.videolan.org/vlc/" },
 
-  { name: "Audacity", category: "Video & Audio", description: "Free open-source audio recorder and editor.", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e2/Audacity_Logo_nofilter.svg", link: "https://www.audacityteam.org/download/" },
+      { name: "Audacity", category: "Video & Audio", description: "Free open-source audio recorder and editor.", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e2/Audacity_Logo_nofilter.svg", link: "https://www.audacityteam.org/download/" },
 
-  { name: "OBS Studio", category: "Video & Audio", description: "Free, open-source software for screen recording and streaming.", logo: "https://upload.wikimedia.org/wikipedia/commons/1/13/OBS_Studio_logo.png", link: "https://obsproject.com/" },
+      { name: "OBS Studio", category: "Video & Audio", description: "Free, open-source software for screen recording and streaming.", logo: "https://upload.wikimedia.org/wikipedia/commons/1/13/OBS_Studio_logo.png", link: "https://obsproject.com/" },
 
-  { name: "HandBrake", category: "Video & Audio", description: "Free video transcoder and converter.", logo: "https://handbrake.fr/img/logo.png", link: "https://handbrake.fr/downloads.php" },
+      { name: "HandBrake", category: "Video & Audio", description: "Free video transcoder and converter.", logo: "https://handbrake.fr/img/logo.png", link: "https://handbrake.fr/downloads.php" },
 
-  { name: "OpenShot", category: "Video & Audio", description: "Free and simple video editor.", logo: "https://upload.wikimedia.org/wikipedia/commons/1/17/OpenShot_logo_%282016%29.svg", link: "https://www.openshot.org/download/" },
+      { name: "OpenShot", category: "Video & Audio", description: "Free and simple video editor.", logo: "https://upload.wikimedia.org/wikipedia/commons/1/17/OpenShot_logo_%282016%29.svg", link: "https://www.openshot.org/download/" },
 
-  { name: "ShareX", category: "Video & Audio", description: "Free open-source screen recording and screenshot tool for Windows.", logo: "https://getsharex.com/img/ShareX_Logo.png", link: "https://getsharex.com/" },
+      { name: "ShareX", category: "Video & Audio", description: "Free open-source screen recording and screenshot tool for Windows.", logo: "https://getsharex.com/img/ShareX_Logo.png", link: "https://getsharex.com/" },
 
-  { name: "DaVinci Resolve", category: "Video & Audio", description: "Professional-grade free video editor.", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4d/DaVinci_Resolve_Studio.png", link: "https://www.blackmagicdesign.com/products/davinciresolve/" },
+      { name: "DaVinci Resolve", category: "Video & Audio", description: "Professional-grade free video editor.", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4d/DaVinci_Resolve_Studio.png", link: "https://www.blackmagicdesign.com/products/davinciresolve/" },
 
-  { name: "Avidemux", category: "Video & Audio", description: "Free video cutting and filtering tool.", logo: "https://projets-ima.plil.fr/mediawiki/images/6/6d/Logo_Avidemux.png", link: "https://avidemux.sourceforge.io/" },
+      { name: "Avidemux", category: "Video & Audio", description: "Free video cutting and filtering tool.", logo: "https://projets-ima.plil.fr/mediawiki/images/6/6d/Logo_Avidemux.png", link: "https://avidemux.sourceforge.io/" },
 
-  { name: "Kdenlive", category: "Video & Audio", description: "Free non-linear video editor for Linux, Windows, and macOS.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c6/Kdenlive-logo.svg", link: "https://kdenlive.org/en/download/" },
+      { name: "Kdenlive", category: "Video & Audio", description: "Free non-linear video editor for Linux, Windows, and macOS.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c6/Kdenlive-logo.svg", link: "https://kdenlive.org/en/download/" },
 
-  // ---- Productivity & Office ----
-  { name: "LibreOffice", category: "Productivity & Office", description: "Free office suite alternative to Microsoft Office.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c0/LibreOffice_logo.svg", link: "https://www.libreoffice.org/download/download/" },
+      // ---- Productivity & Office ----
+      { name: "LibreOffice", category: "Productivity & Office", description: "Free office suite alternative to Microsoft Office.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c0/LibreOffice_logo.svg", link: "https://www.libreoffice.org/download/download/" },
 
-  { name: "Thunderbird", category: "Productivity & Office", description: "Free and open-source email client from Mozilla.", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Thunderbird_Logo%2C_2018.svg", link: "https://www.thunderbird.net/" },
+      { name: "Thunderbird", category: "Productivity & Office", description: "Free and open-source email client from Mozilla.", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Thunderbird_Logo%2C_2018.svg", link: "https://www.thunderbird.net/" },
 
-  { name: "Nextcloud", category: "Productivity & Office", description: "Self-hosted file sync and cloud collaboration platform.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/60/Nextcloud_Logo.svg", link: "https://nextcloud.com/install/" },
+      { name: "Nextcloud", category: "Productivity & Office", description: "Self-hosted file sync and cloud collaboration platform.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/60/Nextcloud_Logo.svg", link: "https://nextcloud.com/install/" },
 
-  { name: "Jitsi Meet", category: "Productivity & Office", description: "Free, secure video conferencing tool.", logo: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Logo_Jitsi.svg", link: "https://meet.jit.si/" },
+      { name: "Jitsi Meet", category: "Productivity & Office", description: "Free, secure video conferencing tool.", logo: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Logo_Jitsi.svg", link: "https://meet.jit.si/" },
 
-  { name: "Trello", category: "Productivity & Office", description: "Free task management and collaboration app.", logo: "https://upload.wikimedia.org/wikipedia/en/8/8c/Trello_logo.svg", link: "https://trello.com/" },
+      { name: "Trello", category: "Productivity & Office", description: "Free task management and collaboration app.", logo: "https://upload.wikimedia.org/wikipedia/en/8/8c/Trello_logo.svg", link: "https://trello.com/" },
 
-  { name: "Notion", category: "Productivity & Office", description: "All-in-one workspace for notes and tasks (free tier).", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg", link: "https://www.notion.so/" },
+      { name: "Notion", category: "Productivity & Office", description: "All-in-one workspace for notes and tasks (free tier).", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg", link: "https://www.notion.so/" },
 
-  { name: "Google Docs", category: "Productivity & Office", description: "Free online document editor by Google.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/01/Google_Docs_logo_%282014-2020%29.svg", link: "https://docs.google.com/" },
+      { name: "Google Docs", category: "Productivity & Office", description: "Free online document editor by Google.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/01/Google_Docs_logo_%282014-2020%29.svg", link: "https://docs.google.com/" },
 
-  { name: "OnlyOffice", category: "Productivity & Office", description: "Free collaborative office suite.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/64/ONLYOFFICE_logo_%28default%29.svg", link: "https://www.onlyoffice.com/download.aspx" },
+      { name: "OnlyOffice", category: "Productivity & Office", description: "Free collaborative office suite.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/64/ONLYOFFICE_logo_%28default%29.svg", link: "https://www.onlyoffice.com/download.aspx" },
 
-  { name: "Zoho Writer", category: "Productivity & Office", description: "Free online word processor.", logo: "https://upload.wikimedia.org/wikipedia/commons/8/88/Zoho_Writer.png", link: "https://www.zoho.com/writer/" },
+      { name: "Zoho Writer", category: "Productivity & Office", description: "Free online word processor.", logo: "https://upload.wikimedia.org/wikipedia/commons/8/88/Zoho_Writer.png", link: "https://www.zoho.com/writer/" },
 
-  { name: "Evernote Basic", category: "Productivity & Office", description: "Free note-taking and organization tool.", logo: "https://cdn-icons-png.flaticon.com/512/187/187193.png", link: "https://evernote.com/" },
+      { name: "Evernote Basic", category: "Productivity & Office", description: "Free note-taking and organization tool.", logo: "https://cdn-icons-png.flaticon.com/512/187/187193.png", link: "https://evernote.com/" },
 
 
-  // ---- Security & Privacy ----
-  { name: "Bitwarden", category: "Security & Privacy", description: "Free, open-source password manager for individuals and teams.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Bitwarden_logo.svg", link: "https://bitwarden.com/" },
+      // ---- Security & Privacy ----
+      { name: "Bitwarden", category: "Security & Privacy", description: "Free, open-source password manager for individuals and teams.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Bitwarden_logo.svg", link: "https://bitwarden.com/" },
 
-  { name: "KeePass", category: "Security & Privacy", description: "Offline password manager storing credentials securely.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/07/KeePass_Logo_%282016%29.svg", link: "https://keepass.info/" },
+      { name: "KeePass", category: "Security & Privacy", description: "Offline password manager storing credentials securely.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/07/KeePass_Logo_%282016%29.svg", link: "https://keepass.info/" },
 
-  { name: "KeePassXC", category: "Security & Privacy", description: "Cross-platform password manager based on KeePass.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c1/KeePassXC.svg", link: "https://keepassxc.org/" },
+      { name: "KeePassXC", category: "Security & Privacy", description: "Cross-platform password manager based on KeePass.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c1/KeePassXC.svg", link: "https://keepassxc.org/" },
 
-  { name: "ProtonVPN", category: "Security & Privacy", description: "Free, secure VPN with strong privacy and no logs.", logo: "https://images.seeklogo.com/logo-png/43/1/proton-vpn-logo-png_seeklogo-438759.png", link: "https://protonvpn.com/" },
+      { name: "ProtonVPN", category: "Security & Privacy", description: "Free, secure VPN with strong privacy and no logs.", logo: "https://images.seeklogo.com/logo-png/43/1/proton-vpn-logo-png_seeklogo-438759.png", link: "https://protonvpn.com/" },
 
-  { name: "Tor Browser", category: "Security & Privacy", description: "Browse the web anonymously using the Tor network.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Tor_Browser_icon.svg", link: "https://www.torproject.org/" },
+      { name: "Tor Browser", category: "Security & Privacy", description: "Browse the web anonymously using the Tor network.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Tor_Browser_icon.svg", link: "https://www.torproject.org/" },
 
-  { name: "Malwarebytes Free", category: "Security & Privacy", description: "Free anti-malware software for Windows and macOS.", logo: "https://upload.wikimedia.org/wikipedia/commons/2/27/Malwarebytes_Logo_%282016%29.svg", link: "https://www.malwarebytes.com/" },
+      { name: "Malwarebytes Free", category: "Security & Privacy", description: "Free anti-malware software for Windows and macOS.", logo: "https://upload.wikimedia.org/wikipedia/commons/2/27/Malwarebytes_Logo_%282016%29.svg", link: "https://www.malwarebytes.com/" },
 
-  { name: "ClamAV", category: "Security & Privacy", description: "Free, open-source antivirus engine.", logo: "https://www.clamav.net/assets/clamav-brand-97d5f8373e4ee2db7b7955e3a94fb6ea802fede9165df3740cb9bdab770b7920.png", link: "https://www.clamav.net/downloads" },
+      { name: "ClamAV", category: "Security & Privacy", description: "Free, open-source antivirus engine.", logo: "https://www.clamav.net/assets/clamav-brand-97d5f8373e4ee2db7b7955e3a94fb6ea802fede9165df3740cb9bdab770b7920.png", link: "https://www.clamav.net/downloads" },
 
-  { name: "VeraCrypt", category: "Security & Privacy", description: "Free, open-source disk encryption software.", logo: "https://veracrypt.io/en/VeraCrypt128x128.png", link: "https://www.veracrypt.fr/" },
+      { name: "VeraCrypt", category: "Security & Privacy", description: "Free, open-source disk encryption software.", logo: "https://veracrypt.io/en/VeraCrypt128x128.png", link: "https://www.veracrypt.fr/" },
 
-  { name: "Bitdefender Free", category: "Security & Privacy", description: "Lightweight free antivirus edition from Bitdefender.", logo: "https://e1.pngegg.com/pngimages/805/780/png-clipart-flatfiles-bitdefender-14-and-15-bitdefender-15-full-icon.png", link: "https://www.bitdefender.com/solutions/free.html" },
+      { name: "Bitdefender Free", category: "Security & Privacy", description: "Lightweight free antivirus edition from Bitdefender.", logo: "https://e1.pngegg.com/pngimages/805/780/png-clipart-flatfiles-bitdefender-14-and-15-bitdefender-15-full-icon.png", link: "https://www.bitdefender.com/solutions/free.html" },
 
-  // ---- Utilities & System ----
-  { name: "7-Zip", category: "Utilities & System", description: "Free and efficient file compression tool.", logo: "https://upload.wikimedia.org/wikipedia/commons/3/37/7-Zip_Logo.png", link: "https://www.7-zip.org/" },
+      // ---- Utilities & System ----
+      { name: "7-Zip", category: "Utilities & System", description: "Free and efficient file compression tool.", logo: "https://upload.wikimedia.org/wikipedia/commons/3/37/7-Zip_Logo.png", link: "https://www.7-zip.org/" },
 
-  { name: "Flameshot", category: "Utilities & System", description: "Powerful free screenshot tool for Linux, Windows, and macOS.", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f6/Flameshot_logo.svg", link: "https://flameshot.org/" },
+      { name: "Flameshot", category: "Utilities & System", description: "Powerful free screenshot tool for Linux, Windows, and macOS.", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f6/Flameshot_logo.svg", link: "https://flameshot.org/" },
 
-  { name: "Google Chrome", category: "Utilities & System", description: "Fast, secure, and widely used web browser from Google.", logo: "https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png", link: "https://www.google.com/chrome/" },
+      { name: "Google Chrome", category: "Utilities & System", description: "Fast, secure, and widely used web browser from Google.", logo: "https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png", link: "https://www.google.com/chrome/" },
 
-  { name: "Mozilla Firefox", category: "Utilities & System", description: "Open-source browser focused on speed and privacy.", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg", link: "https://www.mozilla.org/firefox/new/" },
+      { name: "Mozilla Firefox", category: "Utilities & System", description: "Open-source browser focused on speed and privacy.", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg", link: "https://www.mozilla.org/firefox/new/" },
 
-  { name: "Brave Browser", category: "Utilities & System", description: "Privacy-focused browser with built-in ad blocker.", logo: "https://upload.wikimedia.org/wikipedia/commons/1/14/Brave_Browser_logotype.svg", link: "https://brave.com/download/" },
+      { name: "Brave Browser", category: "Utilities & System", description: "Privacy-focused browser with built-in ad blocker.", logo: "https://upload.wikimedia.org/wikipedia/commons/1/14/Brave_Browser_logotype.svg", link: "https://brave.com/download/" },
 
-  { name: "Opera", category: "Utilities & System", description: "Browser with free VPN, ad blocker, and social integration.", logo: "https://upload.wikimedia.org/wikipedia/commons/4/49/Opera_2015_icon.svg", link: "https://www.opera.com/" },
+      { name: "Opera", category: "Utilities & System", description: "Browser with free VPN, ad blocker, and social integration.", logo: "https://upload.wikimedia.org/wikipedia/commons/4/49/Opera_2015_icon.svg", link: "https://www.opera.com/" },
 
-  { name: "Vivaldi", category: "Utilities & System", description: "Highly customizable and privacy-friendly browser.", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Vivaldi_web_browser_logo.svg", link: "https://vivaldi.com/download/" },
+      { name: "Vivaldi", category: "Utilities & System", description: "Highly customizable and privacy-friendly browser.", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Vivaldi_web_browser_logo.svg", link: "https://vivaldi.com/download/" },
 
-  { name: "FileZilla", category: "Utilities & System", description: "Free FTP and SFTP client for file transfers.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/01/FileZilla_logo.svg", link: "https://filezilla-project.org/" },
+      { name: "FileZilla", category: "Utilities & System", description: "Free FTP and SFTP client for file transfers.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/01/FileZilla_logo.svg", link: "https://filezilla-project.org/" },
 
-  { name: "qBittorrent", category: "Utilities & System", description: "Free and open-source torrent client.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/66/New_qBittorrent_Logo.svg", link: "https://www.qbittorrent.org/" },
+      { name: "qBittorrent", category: "Utilities & System", description: "Free and open-source torrent client.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/66/New_qBittorrent_Logo.svg", link: "https://www.qbittorrent.org/" },
 
-  
-  // ---- Communication & Messaging ----
-  { name: "Zoom", category: "Productivity & Office", description: "Free video conferencing app (up to 100 participants).", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Zoom_Communications_Logo.svg", link: "https://zoom.us/download" },
 
-  { name: "WhatsApp Desktop", category: "Productivity & Office", description: "Free desktop version of WhatsApp for messaging and file sharing.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg", link: "https://www.whatsapp.com/download" },
+      // ---- Communication & Messaging ----
+      { name: "Zoom", category: "Productivity & Office", description: "Free video conferencing app (up to 100 participants).", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Zoom_Communications_Logo.svg", link: "https://zoom.us/download" },
 
-  { name: "Telegram Desktop", category: "Productivity & Office", description: "Fast and secure messaging app with cloud sync.", logo: "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg", link: "https://desktop.telegram.org/" },
+      { name: "WhatsApp Desktop", category: "Productivity & Office", description: "Free desktop version of WhatsApp for messaging and file sharing.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg", link: "https://www.whatsapp.com/download" },
 
-  { name: "Viber", category: "Productivity & Office", description: "Free messaging and calling app for desktop and mobile.", logo: "https://static.vecteezy.com/system/resources/previews/023/986/573/large_2x/viber-logo-viber-logo-transparent-viber-icon-transparent-free-free-png.png", link: "https://www.viber.com/download/" },
+      { name: "Telegram Desktop", category: "Productivity & Office", description: "Fast and secure messaging app with cloud sync.", logo: "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg", link: "https://desktop.telegram.org/" },
 
-  { name: "Signal", category: "Productivity & Office", description: "Free secure messaging app for encrypted communication.", logo: "https://upload.wikimedia.org/wikipedia/commons/8/8d/Signal-Logo.svg", link: "https://signal.org/download/" },
+      { name: "Viber", category: "Productivity & Office", description: "Free messaging and calling app for desktop and mobile.", logo: "https://static.vecteezy.com/system/resources/previews/023/986/573/large_2x/viber-logo-viber-logo-transparent-viber-icon-transparent-free-free-png.png", link: "https://www.viber.com/download/" },
 
-  { name: "Microsoft Outlook", category: "Productivity & Office", description: "Free desktop and web email client by Microsoft (Outlook.com).", logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Microsoft_Office_Outlook_%282018%E2%80%932024%29.svg", link: "https://outlook.com/" },
+      { name: "Signal", category: "Productivity & Office", description: "Free secure messaging app for encrypted communication.", logo: "https://upload.wikimedia.org/wikipedia/commons/8/8d/Signal-Logo.svg", link: "https://signal.org/download/" },
 
-  { name: "Mailspring", category: "Productivity & Office", description: "Modern, fast, and open-source email client.", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Mailspring_Icon.svg", link: "https://getmailspring.com/" },
+      { name: "Microsoft Outlook", category: "Productivity & Office", description: "Free desktop and web email client by Microsoft (Outlook.com).", logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Microsoft_Office_Outlook_%282018%E2%80%932024%29.svg", link: "https://outlook.com/" },
 
-  { name: "BlueMail", category: "Productivity & Office", description: "Free email client supporting multiple accounts and devices.", logo: "https://store-images.s-microsoft.com/image/apps.17293.14297304964854317.ccc4e3ea-3ff1-4929-aa56-1721f3c60d5b.9357e5af-0db5-46af-880a-d5b90c3df2ad?h=210", link: "https://www.bluemail.me/" },
+      { name: "Mailspring", category: "Productivity & Office", description: "Modern, fast, and open-source email client.", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Mailspring_Icon.svg", link: "https://getmailspring.com/" },
 
-  { name: "Nextcloud Talk", category: "Productivity & Office", description: "Free private chat and video call app integrated with Nextcloud.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/60/Nextcloud_Logo.svg", link: "https://nextcloud.com/talk/" },
+      { name: "BlueMail", category: "Productivity & Office", description: "Free email client supporting multiple accounts and devices.", logo: "https://store-images.s-microsoft.com/image/apps.17293.14297304964854317.ccc4e3ea-3ff1-4929-aa56-1721f3c60d5b.9357e5af-0db5-46af-880a-d5b90c3df2ad?h=210", link: "https://www.bluemail.me/" },
 
-  // ---- Time Management & Productivity ----
-  { name: "Todoist Free", category: "Productivity & Office", description: "Free task manager and to-do list app.", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9c/Todoist_logo.svg", link: "https://todoist.com/" },
+      { name: "Nextcloud Talk", category: "Productivity & Office", description: "Free private chat and video call app integrated with Nextcloud.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/60/Nextcloud_Logo.svg", link: "https://nextcloud.com/talk/" },
 
-  { name: "TickTick Free", category: "Productivity & Office", description: "To-do list and habit tracker with Pomodoro timer.", logo: "https://i.pcmag.com/imagery/reviews/00eci0pqg2svlds8vlnv0s4-4-hero-image-gallery.fit_scale.size_1028x578.v1569480473.png", link: "https://ticktick.com/" },
+      // ---- Time Management & Productivity ----
+      { name: "Todoist Free", category: "Productivity & Office", description: "Free task manager and to-do list app.", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9c/Todoist_logo.svg", link: "https://todoist.com/" },
 
-  { name: "Pomofocus", category: "Productivity & Office", description: "Web-based Pomodoro timer for focus and productivity.", logo: "https://pomofocus.io/images/icon-white2.png", link: "https://pomofocus.io/" },
+      { name: "TickTick Free", category: "Productivity & Office", description: "To-do list and habit tracker with Pomodoro timer.", logo: "https://i.pcmag.com/imagery/reviews/00eci0pqg2svlds8vlnv0s4-4-hero-image-gallery.fit_scale.size_1028x578.v1569480473.png", link: "https://ticktick.com/" },
 
-  { name: "Clockify", category: "Productivity & Office", description: "Free time tracking and productivity analytics tool.", logo: "https://images.seeklogo.com/logo-png/45/1/clockify-logo-png_seeklogo-457338.png", link: "https://clockify.me/" },
+      { name: "Pomofocus", category: "Productivity & Office", description: "Web-based Pomodoro timer for focus and productivity.", logo: "https://pomofocus.io/images/icon-white2.png", link: "https://pomofocus.io/" },
 
-  { name: "Toggl Track", category: "Productivity & Office", description: "Free time tracking app for individuals and teams.", logo: "https://assets.stickpng.com/images/62cc45237755665152a8df73.png", link: "https://toggl.com/track/" },
+      { name: "Clockify", category: "Productivity & Office", description: "Free time tracking and productivity analytics tool.", logo: "https://images.seeklogo.com/logo-png/45/1/clockify-logo-png_seeklogo-457338.png", link: "https://clockify.me/" },
 
-  { name: "Google Keep", category: "Productivity & Office", description: "Free note-taking and checklist app from Google.", logo: "https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png", link: "https://keep.google.com/" },
+      { name: "Toggl Track", category: "Productivity & Office", description: "Free time tracking app for individuals and teams.", logo: "https://assets.stickpng.com/images/62cc45237755665152a8df73.png", link: "https://toggl.com/track/" },
 
-  { name: "Trello Free", category: "Productivity & Office", description: "Kanban-based task management tool with free tier.", logo: "https://upload.wikimedia.org/wikipedia/en/8/8c/Trello_logo.svg", link: "https://trello.com/" },
+      { name: "Google Keep", category: "Productivity & Office", description: "Free note-taking and checklist app from Google.", logo: "https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png", link: "https://keep.google.com/" },
 
-  { name: "Google Calendar", category: "Productivity & Office", description: "Free online calendar and event scheduler by Google.", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg", link: "https://calendar.google.com/" },
-{ name: "Code::Blocks", category: "Development", description: "Free, open-source C, C++, and Fortran IDE.", logo: "https://upload.wikimedia.org/wikipedia/fr/0/01/Codeblocks_logo1.png", link: "https://www.codeblocks.org/downloads/" },
+      { name: "Trello Free", category: "Productivity & Office", description: "Kanban-based task management tool with free tier.", logo: "https://upload.wikimedia.org/wikipedia/en/8/8c/Trello_logo.svg", link: "https://trello.com/" },
 
-{ name: "Free Download Manager", category: "Utilities & System", description: "Free, open-source download accelerator and manager for Windows, macOS, and Linux.", logo: "https://img.icons8.com/?size=1200&id=4mlGX7Lq0uUk&format=jpg", link: "https://www.freedownloadmanager.org/" },
+      { name: "Google Calendar", category: "Productivity & Office", description: "Free online calendar and event scheduler by Google.", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg", link: "https://calendar.google.com/" },
+      { name: "Code::Blocks", category: "Development", description: "Free, open-source C, C++, and Fortran IDE.", logo: "https://upload.wikimedia.org/wikipedia/fr/0/01/Codeblocks_logo1.png", link: "https://www.codeblocks.org/downloads/" },
 
-{ name: "JDownloader 2", category: "Utilities & System", description: "Free, open-source download manager with plugin support for many sites.", logo: "https://img.icons8.com/?size=512&id=21270&format=png", link: "https://jdownloader.org/download/index" },
+      { name: "Free Download Manager", category: "Utilities & System", description: "Free, open-source download accelerator and manager for Windows, macOS, and Linux.", logo: "https://img.icons8.com/?size=1200&id=4mlGX7Lq0uUk&format=jpg", link: "https://www.freedownloadmanager.org/" },
 
-// ---- Office Essentials & File Tools ----
-{ name: "Foxit PDF Reader", category: "Productivity & Office", description: "Free, lightweight PDF reader and annotator for Windows, macOS, and Linux.", logo: "https://img.utdstc.com/icon/f67/8c7/f678c76b6137ff6f84b9f7fe1ef78f6e0da00a964f43d0f167ae353d8769fe74:100", link: "https://www.foxit.com/pdf-reader/" },
+      { name: "JDownloader 2", category: "Utilities & System", description: "Free, open-source download manager with plugin support for many sites.", logo: "https://img.icons8.com/?size=512&id=21270&format=png", link: "https://jdownloader.org/download/index" },
 
-{ name: "SumatraPDF", category: "Productivity & Office", description: "Free, open-source, ultra-fast PDF, ePub, and MOBI reader for Windows.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Sumatra_PDF_logo.svg", link: "https://www.sumatrapdfreader.org/free-pdf-reader.html" },
+      // ---- Office Essentials & File Tools ----
+      { name: "Foxit PDF Reader", category: "Productivity & Office", description: "Free, lightweight PDF reader and annotator for Windows, macOS, and Linux.", logo: "https://img.utdstc.com/icon/f67/8c7/f678c76b6137ff6f84b9f7fe1ef78f6e0da00a964f43d0f167ae353d8769fe74:100", link: "https://www.foxit.com/pdf-reader/" },
 
-{ name: "PDF-XChange Editor", category: "Productivity & Office", description: "Free PDF viewer and editor with annotation and OCR features.", logo: "https://designshop.hu/_assets/img/upload/thumb_259.jpg", link: "https://www.tracker-software.com/product/pdf-xchange-editor" },
+      { name: "SumatraPDF", category: "Productivity & Office", description: "Free, open-source, ultra-fast PDF, ePub, and MOBI reader for Windows.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Sumatra_PDF_logo.svg", link: "https://www.sumatrapdfreader.org/free-pdf-reader.html" },
 
-{ name: "CDBurnerXP", category: "Utilities & System", description: "Free application to burn CDs, DVDs, and ISO images.", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e7/CDBurnerXP_logo.png", link: "https://cdburnerxp.se/" },
+      { name: "PDF-XChange Editor", category: "Productivity & Office", description: "Free PDF viewer and editor with annotation and OCR features.", logo: "https://designshop.hu/_assets/img/upload/thumb_259.jpg", link: "https://www.tracker-software.com/product/pdf-xchange-editor" },
 
-{ name: "ImgBurn", category: "Utilities & System", description: "Free disc image burner supporting ISO, BIN, and IMG formats.", logo: "https://www.imgburn.com/images/logo.png", link: "https://www.imgburn.com/" },
+      { name: "CDBurnerXP", category: "Utilities & System", description: "Free application to burn CDs, DVDs, and ISO images.", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e7/CDBurnerXP_logo.png", link: "https://cdburnerxp.se/" },
 
-{ name: "PDFsam Basic", category: "Productivity & Office", description: "Free and open-source PDF splitter and merger.", logo: "https://pdfsam.org/imgs/pdfsam.svg", link: "https://pdfsam.org/download-pdfsam-basic/" },
+      { name: "ImgBurn", category: "Utilities & System", description: "Free disc image burner supporting ISO, BIN, and IMG formats.", logo: "https://www.imgburn.com/images/logo.png", link: "https://www.imgburn.com/" },
 
-{ name: "WPS Office Free", category: "Productivity & Office", description: "Free office suite with Word, Excel, and PowerPoint alternatives.", logo: "https://images.seeklogo.com/logo-png/38/1/wps-office-logo-png_seeklogo-381395.png", link: "https://www.wps.com/office-free" },
+      { name: "PDFsam Basic", category: "Productivity & Office", description: "Free and open-source PDF splitter and merger.", logo: "https://pdfsam.org/imgs/pdfsam.svg", link: "https://pdfsam.org/download-pdfsam-basic/" },
 
+      { name: "WPS Office Free", category: "Productivity & Office", description: "Free office suite with Word, Excel, and PowerPoint alternatives.", logo: "https://images.seeklogo.com/logo-png/38/1/wps-office-logo-png_seeklogo-381395.png", link: "https://www.wps.com/office-free" },
 
-// ---- Cloud Storage & Sync ----
-{ name: "Google Drive", category: "Cloud Storage & Sync", description: "Free cloud storage service from Google with 15 GB of free space.", logo: "https://upload.wikimedia.org/wikipedia/commons/d/da/Google_Drive_logo.png", link: "https://drive.google.com/" },
 
-{ name: "Dropbox Basic", category: "Cloud Storage & Sync", description: "Free plan offering 2 GB of secure file storage and device sync.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Dropbox_logo_2017.svg", link: "https://www.dropbox.com/basic" },
+      // ---- Cloud Storage & Sync ----
+      { name: "Google Drive", category: "Cloud Storage & Sync", description: "Free cloud storage service from Google with 15 GB of free space.", logo: "https://upload.wikimedia.org/wikipedia/commons/d/da/Google_Drive_logo.png", link: "https://drive.google.com/" },
 
-{ name: "MEGA", category: "Cloud Storage & Sync", description: "Free, end-to-end encrypted cloud storage with 20 GB free space.", logo: "https://upload.wikimedia.org/wikipedia/commons/5/57/01_mega_logo.svg", link: "https://mega.io/" },
+      { name: "Dropbox Basic", category: "Cloud Storage & Sync", description: "Free plan offering 2 GB of secure file storage and device sync.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Dropbox_logo_2017.svg", link: "https://www.dropbox.com/basic" },
 
-{ name: "pCloud", category: "Cloud Storage & Sync", description: "Free cloud storage with 10 GB free and lifetime upgrade options.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/62/Pcloud-logo.svg", link: "https://www.pcloud.com/" },
+      { name: "MEGA", category: "Cloud Storage & Sync", description: "Free, end-to-end encrypted cloud storage with 20 GB free space.", logo: "https://upload.wikimedia.org/wikipedia/commons/5/57/01_mega_logo.svg", link: "https://mega.io/" },
 
-// ---- AI & Writing Assistants ----
-{ name: "Grammarly", category: "AI & Writing Assistants", description: "Free AI-powered grammar checker and writing assistant for English text.", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d2/Grammarly_logo.svg", link: "https://www.grammarly.com/" },
+      { name: "pCloud", category: "Cloud Storage & Sync", description: "Free cloud storage with 10 GB free and lifetime upgrade options.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/62/Pcloud-logo.svg", link: "https://www.pcloud.com/" },
 
-{ name: "DeepL Write", category: "AI & Writing Assistants", description: "Free AI writing and grammar improvement tool by DeepL.", logo: "https://play-lh.googleusercontent.com/0IH4L3pX-jqQXKYCDmxTM5t3Tvak2cb_zUuIs9nKCHPeOqkaRJ_bRTq1qKawsSvunw=w240-h480-rw", link: "https://www.deepl.com/write" },
+      // ---- AI & Writing Assistants ----
+      { name: "Grammarly", category: "AI & Writing Assistants", description: "Free AI-powered grammar checker and writing assistant for English text.", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d2/Grammarly_logo.svg", link: "https://www.grammarly.com/" },
 
-{ name: "ChatGPT Free", category: "AI & Writing Assistants", description: "Free conversational AI by OpenAI for brainstorming, coding, and writing.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg", link: "https://chat.openai.com/" },
+      { name: "DeepL Write", category: "AI & Writing Assistants", description: "Free AI writing and grammar improvement tool by DeepL.", logo: "https://play-lh.googleusercontent.com/0IH4L3pX-jqQXKYCDmxTM5t3Tvak2cb_zUuIs9nKCHPeOqkaRJ_bRTq1qKawsSvunw=w240-h480-rw", link: "https://www.deepl.com/write" },
 
+      { name: "ChatGPT Free", category: "AI & Writing Assistants", description: "Free conversational AI by OpenAI for brainstorming, coding, and writing.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg", link: "https://chat.openai.com/" },
 
-// ---- Gaming & Emulation ----
-{ name: "Steam", category: "Gaming & Emulation", description: "Free gaming platform for downloading, managing, and playing games.", logo: "https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg", link: "https://store.steampowered.com/" },
 
-{ name: "RetroArch", category: "Gaming & Emulation", description: "Free, open-source frontend for emulators, game engines, and media players.", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Retroarch.svg", link: "https://www.retroarch.com/" },
+      // ---- Gaming & Emulation ----
+      { name: "Steam", category: "Gaming & Emulation", description: "Free gaming platform for downloading, managing, and playing games.", logo: "https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg", link: "https://store.steampowered.com/" },
 
-{ name: "Dolphin Emulator", category: "Gaming & Emulation", description: "Free emulator for Nintendo GameCube and Wii games.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/60/Dolphin-logo.svg", link: "https://dolphin-emu.org/" },
+      { name: "RetroArch", category: "Gaming & Emulation", description: "Free, open-source frontend for emulators, game engines, and media players.", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Retroarch.svg", link: "https://www.retroarch.com/" },
 
-{ name: "PCSX2", category: "Gaming & Emulation", description: "Free and open-source emulator for PlayStation 2 games.", logo: "https://pcsx2.net/img/logo.webp", link: "https://pcsx2.net/" },
+      { name: "Dolphin Emulator", category: "Gaming & Emulation", description: "Free emulator for Nintendo GameCube and Wii games.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/60/Dolphin-logo.svg", link: "https://dolphin-emu.org/" },
 
-{ name: "Godot Engine", category: "Gaming & Emulation", description: "Free, open-source 2D and 3D game engine for creating and exporting games.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg", link: "https://godotengine.org/" },
+      { name: "PCSX2", category: "Gaming & Emulation", description: "Free and open-source emulator for PlayStation 2 games.", logo: "https://pcsx2.net/img/logo.webp", link: "https://pcsx2.net/" },
 
-// ---- Crypto & Stocks ----
-{ name: "CoinMarketCap", category: "Crypto & Stocks", description: "Free platform for tracking cryptocurrency prices, charts, and market data.", logo: "https://upload.wikimedia.org/wikipedia/ar/1/1d/Coinmarketcap_logo.png", link: "https://coinmarketcap.com/" },
+      { name: "Godot Engine", category: "Gaming & Emulation", description: "Free, open-source 2D and 3D game engine for creating and exporting games.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg", link: "https://godotengine.org/" },
 
-{ name: "TradingView", category: "Crypto & Stocks", description: "Free charting and analysis platform for stocks, forex, and crypto with social sharing features.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0f/TradingView_logos_rebrend.png", link: "https://www.tradingview.com/" },
+      // ---- Crypto & Stocks ----
+      { name: "CoinMarketCap", category: "Crypto & Stocks", description: "Free platform for tracking cryptocurrency prices, charts, and market data.", logo: "https://upload.wikimedia.org/wikipedia/ar/1/1d/Coinmarketcap_logo.png", link: "https://coinmarketcap.com/" },
 
-{ name: "Binance", category: "Crypto & Stocks", description: "Free cryptocurrency exchange with charts, spot trading, and portfolio view (account required).", logo: "https://upload.wikimedia.org/wikipedia/commons/5/57/Binance_Logo.png", link: "https://www.binance.com/" },
+      { name: "TradingView", category: "Crypto & Stocks", description: "Free charting and analysis platform for stocks, forex, and crypto with social sharing features.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0f/TradingView_logos_rebrend.png", link: "https://www.tradingview.com/" },
 
-{ name: "CoinGecko", category: "Crypto & Stocks", description: "Free crypto data aggregator with price alerts and portfolio tracking.", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/CoinGecko_logo.png", link: "https://www.coingecko.com/" },
+      { name: "Binance", category: "Crypto & Stocks", description: "Free cryptocurrency exchange with charts, spot trading, and portfolio view (account required).", logo: "https://upload.wikimedia.org/wikipedia/commons/5/57/Binance_Logo.png", link: "https://www.binance.com/" },
 
-{ name: "Yahoo Finance", category: "Crypto & Stocks", description: "Free finance and stock market tracker with news, charts, and portfolio tools.", logo: "https://upload.wikimedia.org/wikipedia/commons/8/8f/Yahoo%21_Finance_logo_2021.png", link: "https://finance.yahoo.com/" }
+      { name: "CoinGecko", category: "Crypto & Stocks", description: "Free crypto data aggregator with price alerts and portfolio tracking.", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/CoinGecko_logo.png", link: "https://www.coingecko.com/" },
 
+      { name: "Yahoo Finance", category: "Crypto & Stocks", description: "Free finance and stock market tracker with news, charts, and portfolio tools.", logo: "https://upload.wikimedia.org/wikipedia/commons/8/8f/Yahoo%21_Finance_logo_2021.png", link: "https://finance.yahoo.com/" },
+
+      // ---- Engineering & Simulation ----
+      { name: "GNU Octave", category: "Engineering & Simulation", description: "Free MATLAB-compatible numerical computing environment.", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Gnu-octave-logo.svg", link: "https://www.gnu.org/software/octave/" },
+
+      { name: "LTspice", category: "Engineering & Simulation", description: "Free SPICE simulation software for electrical circuit design.", logo: "https://heise.cloudimg.io/v7/_www-heise-de_/download/media/lt-spice-iv-65702/ltspice-logo_1-1-30.png?force_format=avif,webp,jpeg&org_if_sml=1&q=70&width=743", link: "https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html" },
+
+      { name: "KiCad EDA", category: "Engineering & Simulation", description: "Free, open-source PCB design and schematic capture suite.", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/KiCad-Logo.svg", link: "https://www.kicad.org/" },
+
+      { name: "FreeCAD", category: "Engineering & Simulation", description: "Open-source 3D CAD modeler for mechanical design and simulation.", logo: "https://www.freecad.org/svg/logo-freecad.svg", link: "https://www.freecad.org/" },
+
+      { name: "Fritzing", category: "Engineering & Simulation", description: "Free open-source hardware design tool for breadboard and PCB layouts.", logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Fritzing_logo_%28new%29.png", link: "https://fritzing.org/" },
+
+      { name: "Wireshark", category: "Engineering & Simulation", description: "Free network packet analyzer used in engineering and cybersecurity.", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c6/Wireshark_icon_new.png", link: "https://www.wireshark.org/" },
+
+      { name: "Scilab", category: "Engineering & Simulation", description: "Free open-source software for numerical computation and simulation.", logo: "https://www.scilab.org/themes/bs43ds/img/scilab-logo.png?v20201103", link: "https://www.scilab.org/" },
+
+      { name: "Blender (Engineering Use)", category: "Engineering & Simulation", description: "Free open-source 3D modeling and animation tool used in design visualization and mechanical simulation.", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg", link: "https://www.blender.org/" },
+
+      {
+        name: "Arduino IDE",
+        category: "Engineering & Simulation",
+        description: "Free open-source development environment for coding and uploading programs to Arduino microcontrollers.",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg",
+        link: "https://www.arduino.cc/en/software"
+      },
 
 
     ];
@@ -321,8 +487,8 @@ const softwareList = [
     }
 
     function applySortInPlace(arr, mode) {
-      if (mode === "az") arr.sort((a,b)=>a.name.localeCompare(b.name));
-      if (mode === "za") arr.sort((a,b)=>b.name.localeCompare(a.name));
+      if (mode === "az") arr.sort((a, b) => a.name.localeCompare(b.name));
+      if (mode === "za") arr.sort((a, b) => b.name.localeCompare(a.name));
     }
 
     function sortSoftware() {
@@ -341,10 +507,10 @@ const softwareList = [
           .map(s => ({
             ...s,
             rank: s.name.toLowerCase().includes(query) ? 2 :
-                  s.description.toLowerCase().includes(query) ? 1 : 0
+              s.description.toLowerCase().includes(query) ? 1 : 0
           }))
           .filter(s => s.rank > 0)
-          .sort((a,b) => b.rank - a.rank || a.name.localeCompare(b.name));
+          .sort((a, b) => b.rank - a.rank || a.name.localeCompare(b.name));
       }
       applySortInPlace(currentItems, document.getElementById("sortSelect").value);
       renderSoftware(currentItems);
@@ -354,7 +520,7 @@ const softwareList = [
       const categories = ["all", ...new Set(softwareList.map(s => s.category))];
       categoryButtons.innerHTML = categories.map(cat => {
         const count = (cat === "all") ? softwareList.length : softwareList.filter(s => s.category === cat).length;
-        const id = `btn-${cat.replace(/\s+/g,'')}`;
+        const id = `btn-${cat.replace(/\s+/g, '')}`;
         return `<button type="button" id="${id}" onclick="filterCategory('${cat.replace(/'/g, "\\'")}')">${cat} (${count})</button>`;
       }).join("");
     }
@@ -367,4 +533,5 @@ const softwareList = [
     renderSoftware(currentItems);
   </script>
 </body>
+
 </html>
